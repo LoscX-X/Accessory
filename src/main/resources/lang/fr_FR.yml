@@ -1,0 +1,103 @@
+# Accessory+ · Français
+
+messages:
+  # Commandes et permissions
+  No_permission: "<red>Permission insuffisante pour cette commande."
+  Only_player_open: "<red>Commande réservée aux joueurs en jeu."
+  Player_not_found: "<red>Introuvable: joueur"
+  Cendreal-Accessory_unknown: "<red>Sous-commande inconnue. /accessory, /accessory reload, /accessory clear <player>, /accessory view <player>."
+  Reload_usage: "<red>Usage: /accessory reload"
+  Reload_success: "<green>[Accessory+] Rechargement réussi."
+  Reload_failed: "<red>[Accessory+] Échec du rechargement. Vérifiez les erreurs dans la console."
+  View_usage: "<red>Usage: /accessory view <player>"
+  Clear_usage: "<red>Usage: /accessory clear <player>"
+  Clear_success: "<green>[Accessory+] Accessoires du joueur effacés."
+  Clear_failed: "<red>[Accessory+] Échec de suppression des accessoires."
+
+  # Conditions des emplacements et objets rendus
+  Slot_no_permission: "<red>Permission insuffisante pour cet emplacement d'accessoire."
+  Slot_level_not_met: "<red>This accessory slot requires level {min}."
+  Slot_class_not_met: "<red>Your class cannot use this accessory slot."
+  Slot_requirement_unavailable: "<red>This slot’s requirements cannot be checked right now. Try again later."
+  Item_not_match: "<red>Objet incompatible avec cet emplacement."
+  Item_locked: "<red>Emplacement verrouillé."
+  Slot_locked_name: "<italic:false><#800080>[VERROUILLÉ]"
+  Item_limit_reached: "<red>Limite d'équipement de cet accessoire atteinte."
+  Item_cannot_unequip: "<red>[Anti-unequip]: retrait impossible."
+  Accessory_returned: "<yellow>You no longer meet the requirements. Some accessories were returned to your inventory."
+  Accessory_returned_dropped: "<yellow>You no longer meet the requirements. Accessories that did not fit were dropped at your feet."
+
+  # Équipement rapide
+  Cendreal-Accessory_equipped: "<green>Accessory+ équipé en page {page}, emplacement {slot}."
+  Quick_equip_select_header: "<yellow>Plusieurs emplacements compatibles. Cliquez pour changer:"
+  Quick_equip_select_option: "<aqua>[Page {page} / Slot {slot}]"
+  Quick_equip_select_hover: "<gray>Cliquez pour équiper ici."
+
+  # Boucliers et vol de vie
+  Life_steal_success: "<green>Vol de vie +"
+  Shield_missing_permission: "<red>permission manquante: "
+  Shield_unavailable: "<red>Fonction de bouclier indisponible.</red>"
+  Shield_usage: "<yellow>Format de commande:</yellow>"
+  Shield_give_arguments: " donner &lt;me|player|all&gt; &lt;value&gt;</gray>"
+  Shield_givep_arguments: " givep &lt;me|player|all&gt; &lt;percentage&gt;</gray>"
+  Shield_invalid_number: "<red>Format numérique invalide -> "
+  Shield_unknown_player: "<red>Cible absente ou hors ligne: "
+  Shield_unknown_mode: "<red>Mode inconnu: "
+  Shield_valid_modes: "; utilisez give ou givep</red>"
+  Shield_applied: "<green>Action appliquée à "
+  Shield_mode: " joueurs. Mode="
+  Shield_target: ", cible="
+  Shield_value: ", valeur="
+
+  # Synchronisation entre serveurs
+  Storage_syncing: "<yellow>Syncing your accessories from another server..."
+  Storage_locked: "<red>Your accessories are in use on another server and cannot be loaded yet."
+  Storage_migrating: "<red>The server is migrating accessory data. Please try again shortly."
+
+  # Migration des données
+  Migrate_usage: "Usage: /accessory migrate <source> <target> [--dry-run] [--overwrite]"
+  Migrate_console: "Run migrations from the server console."
+  Migrate_enable_yml: "Enable YML storage to create the contents directory before migrating to it."
+  Migrate_busy: "A migration or reload is already running."
+  Migrate_online: "All players must leave before migration."
+  Migrate_pending: "Unresolved inventory writes: {detail}"
+  Migrate_leases: "The backend has active leases: {detail}"
+  Migrate_conflicts: "Target conflicts ({count}): {detail}"
+  Migrate_progress: "Processed {count} players."
+  Migrate_summary: "Source {total}, copied {copied}, overwritten {overwritten}, skipped {skipped}, failed {failed}, elapsed {ms} ms."
+  Migrate_dry: "Dry run finished without writing the target."
+  Migrate_switch: "Set storage.type to {target} and restart the server."
+  Migrate_failed: "Migration incomplete. Keep the current storage.type. {detail}"
+
+# Traductions de l’interface. Conservez les clés et modifiez le texte à droite.
+templates:
+  # Page des jeux de cartes
+  t_d329b41a29241902: "<#76C5E2><bold>Decks</bold> <gray>{page}/{max_page}"
+  t_c22de4119ff8ba53: "<#76C5E2>♠ Piques"
+  t_7d89c1f8d8ffa826: "<gray>En dessous: decks Pique uniquement"
+  t_a15bc2c06dbbeb07: "<#DFFB9D>♣ Trèfles"
+  t_96b7d4e00afccfc1: "<gray>En dessous: decks Trèfle uniquement"
+  t_cd6d12636454ac27: "<#F4A6BB>❤ Coeurs"
+  t_bab650cd8243ff40: "<gray>En dessous: decks Coeur uniquement"
+  t_6a4f124f29d16eba: "<#F4BF75>♦ Carreaux"
+  t_5f8c57a86871a523: "<gray>En dessous: decks Carreau uniquement"
+  t_129a3447b95f7b8c: "<gold>Decks · 5 emplacements"
+  t_1dc70e29a98f89b4: "<gray>Chaque couleur dispose de son emplacement"
+  t_80eb4d186935113d: "<gray>L'emplacement central inférieur accepte toute couleur"
+  t_d41b6bd292fbdd7d: "<gray>L'emplacement universel accepte seulement les decks"
+  t_47b059436d51c35b: "<yellow>Reliques →"
+  t_8ce4b2db2afce3e3: "<gray>Ouvrir les 12 emplacements de reliques"
+
+  # Page des reliques
+  t_1b9548bd0696fbbc: "<#FFE476><bold>Reliques</bold> <gray>{page}/{max_page}"
+  t_373364d11e5fbbd8: "<#FFE476>Reliques · 12 emplacements"
+  t_c0335bb0d4a95b36: "<gray>Chaque emplacement accepte les reliques [Relics]"
+  t_b1f7305cd9bbacf6: "<yellow>← Decks"
+  t_1927388b1713d1be: "<gray>Retour aux 5 emplacements de decks"
+
+  # Textes communs
+  t_2ca80ee48a319a1d: "<red>Emplacement désactivé"
+  t_77a2ca9d483273e8: "<gray>Cet emplacement est indisponible"
+  t_cc0332a724139c44: "<green>Inventaire d'accessoires <gray>{page}/{max_page}"
+  t_99e2e1552b1fda67: "[Verrouillé]"
+  t_45bc77bc1c58d044: "Vie"

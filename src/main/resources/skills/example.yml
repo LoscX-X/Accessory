@@ -1,9 +1,10 @@
-# 饰品通过 acc_item_id 或显式配置的显示名识别。
-# MythicMobs 的技能本体、伤害和 Conditions 写在 MythicMobs 中。
+# 示例戒指 · 通过 acc_item_id 或配置的显示名识别。
+# skill 填写 MythicMobs 中定义的技能名，伤害与 Conditions 写在对应技能中。
 items:
   example_ring:
     name: "示例戒指"
     skills:
+      # 攻击目标时施放，冷却按秒计。cd 指定占位符的展示位置。
       - id: attack
         skill: ExampleAttackSkill
         trigger: onAttack
@@ -11,11 +12,15 @@ items:
         cooldown: 5
         cd: 1
         cd-format: "攻击 {cd}s"
+
+      # 定时对自己施放，period 按 tick 计。
       - id: pulse
         skill: ExampleTimerSkill
         trigger: onTimer
         period: 20
         target: self
+
+      # 死亡时对自己施放。
       - id: rescue
         skill: ExampleDeathSkill
         trigger: onDeath
@@ -23,11 +28,14 @@ items:
         forcesync: true
         cancelevent: false
 
-# trigger: onAttack / onCriticalHit / onDamaged / onShoot / onKill /
-#          onDeath / onTimer / onSkillCast / onInteract
-# onInteract：主手右键，尊重物品交互禁止；快捷装备已处理的交互不会再触发技能。
-# target 可省略，按触发方式自动使用合理默认；self / targeted / attacker / projectile / none。
-# period：仅 onTimer，单位 tick，默认 20。cooldown：秒，默认 0。
-# cd：固定展示槽 1..10，可省略并自动排序；%blacc_cd_1% 至 %blacc_cd_10%。
-# id：稳定技能标识，省略时为 skill@trigger；同一物品中不能重复。
-# 复制同种饰品只注册一次同一能力；换槽、重排配置不会重置冷却。
+# 可用 trigger
+#   onAttack / onCriticalHit / onDamaged / onShoot / onKill
+#   onDeath / onTimer / onSkillCast / onInteract
+# onInteract 使用主手右键。禁止物品交互或已用于快捷装备时会跳过。
+#
+# 可用 target
+#   self / targeted / attacker / projectile / none
+# 省略 target 时按触发方式选择目标。period 默认 20，cooldown 默认 0。
+#
+# id 在同一物品内唯一，省略时使用 skill@trigger。同款饰品共用冷却，换槽和重排后仍然有效。
+# cd 的范围是 1–10，对应 %acc_cd_1% 到 %acc_cd_10%。省略时自动排序。

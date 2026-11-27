@@ -1,5 +1,8 @@
-/gradlew
-/gradlew.bat
-/.gradle/
-/build/
+.gradle/
 **/build/
+.idea/
+*.iml
+.work/
+dist/
+libs/*.jar
+__pycache__/

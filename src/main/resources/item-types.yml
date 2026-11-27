@@ -1,0 +1,7 @@
+# 饰品类型 · 将完整物品 ID 映射到 layouts/ 槽位接受的类型。
+# 添加物品时，用下方示例的写法替换空表。
+# items:
+#   'mythic:StarRing': [ring]
+#   'mythic:StarCharm': [charm, relic]
+
+items: {}

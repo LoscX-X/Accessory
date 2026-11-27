@@ -1,25 +1,78 @@
-# 当前版本只读取以下分组。群体使用哪套背包请配置 profiles/，槽位外观请配置 layouts/。
+# Accessory+ · 主配置
+# 玩家分组见 profiles/，页面与槽位见 layouts/，提示文字见 lang/。
+
 general:
   language: en_US
 
+# ── 背包与装备 ──
 inventory:
-  # 布局文件省略 title / size 时采用的默认值。
+  # 布局省略标题或大小时使用。每行有 9 格。
   title: "<green>饰品背包 <gray>{page}/{max_page}"
   size: 9
+
   quick-equip:
     shift-right-click: true
+
   anti-unequip:
-    lore: ["[Anti-unequip]"]
+    lore:
+      - "[Anti-unequip]"
+      - "[锁定]"
+
   item-limits:
+    shared-lore: ["[超频]"]
     example_ring:
       id: example_ring
       max: 1
 
+lifecycle:
+  # keep 保留饰品，drop 掉落饰品，follow-keep-inventory 跟随游戏规则。
+  death: keep
+
+# ── 数据存储 ──
+storage:
+  # sqlite（默认） / yml / mysql / redis / only-ram
+  # 启用 yml 才会创建 contents/。only-ram 适合单局小游戏，玩家退出即清空。
+  type: sqlite
+
+  sqlite:
+    file: accessory.db
+
+  # 多服共用 MySQL 或 Redis 时开启。每台服填写唯一的 server-id。
+  cross-server:
+    enabled: false
+    server-id: ''
+    lease-seconds: 30
+
+  # 旧版背包迁移时，按原顺序填写每页格数，例如 [9, 27]。
+  legacy-page-sizes: []
+
+  redis:
+    # 有密码时使用 redis://:密码@主机:6379/0，ACL 用户使用 redis://用户:密码@主机:6379/0。
+    # TLS 使用 rediss://。凭据中的特殊字符需按 URI 百分号编码。连接和读写超时均为 2 秒。
+    uri: redis://127.0.0.1:6379/0
+    key-prefix: 'cendreal:accessory:inventory:'
+
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    database: minecraft
+    username: root
+    password: password
+
+    # 连接池大小按连接数填写，以下超时与寿命按毫秒填写。
+    pool-size: 10
+    min-idle: 2
+    max-lifetime: 1800000
+    connection-timeout: 10000
+    idle-timeout: 600000
+
+# ── 属性、护盾与技能 ──
 attribute:
-  # 只能选择一个外部属性来源：none / AuraSkills / AttributePlus / BlancAttribute。
-  # 只使用原版属性：provider: none + vanilla: true。不会自动选择其他插件。
+  # provider 选择外部属性来源，例如 auraskills。none 关闭外部来源。
+  # vanilla 独立控制原版属性。
   provider: none
   vanilla: true
+
   lore:
     enable: false
     mappings:
@@ -27,50 +80,39 @@ attribute:
         attribute: minecraft:max_health
         keywords: [生命, health]
 
-skills:
-  # 独立的 MythicMobs 技能系统；未安装依赖时不启动。技能定义放在 skills/。
-  enabled: true
-  triggers:
-    # 需要免伤 aura 在伤害取消后也触发时才开启。
-    cancelled-damage: false
-  cooldowns:
-    # 冷却默认属于登录会话；死亡、换槽和切换 profile 均不会重置。
-    reset-on-quit: true
-
-lifecycle:
-  # keep / drop / follow-keep-inventory
-  death: keep
-
-debug:
-  enabled: false
-  categories: [lifecycle, inventory, skills, hooks, storage]
-  # 同类事件的最短日志间隔，单位 tick；0 表示不节流。
-  interval-ticks: 20
-
 aura:
   physical-shield:
     out-of-combat-seconds: 12
     regen-percent: 0.10
+
   magic-shield:
     out-of-combat-seconds: 12
     regen-percent: 0.10
+
   life-steal:
     show-heal-message: false
 
-storage:
-  # yml / mysql / only-ram。RAM 专用于小游戏，退出后清空，不写入持久化存储。
-  type: yml
-  # 仅迁移旧物品数据时使用：依次填写旧背包每页的大小，例如 [9, 27]。
-  # 新数据以固定页号/槽号保存；修改 profile 不会改变存储位置。
-  legacy-page-sizes: []
-  mysql:
-    host: 127.0.0.1
-    port: 3306
-    database: minecraft
-    username: root
-    password: password
-    pool-size: 10
-    min-idle: 2
-    max-lifetime: 1800000
-    connection-timeout: 10000
-    idle-timeout: 600000
+skills:
+  # skills/ 中的技能使用此执行器施放。
+  executor: mythic
+  enabled: true
+
+  triggers:
+    # 开启后，已取消的伤害事件也能触发受击技能。
+    cancelled-damage: false
+
+  cooldowns:
+    # 退出时重置冷却。死亡、换槽和切换玩家分组都会保留冷却。
+    reset-on-quit: true
+
+# ── 调试日志 ──
+debug:
+  enabled: false
+  categories:
+    - lifecycle
+    - inventory
+    - skills
+    - hooks
+    - storage
+  # 同类事件的最短输出间隔，单位为 tick。填 0 时每次都记录。
+  interval-ticks: 20

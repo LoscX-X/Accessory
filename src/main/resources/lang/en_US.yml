@@ -1,0 +1,103 @@
+# Accessory+ · English (US)
+
+messages:
+  # Commands and permissions
+  No_permission: "<red>You do not have permission to use this command."
+  Only_player_open: "<red>This command can only be executed by an in-game player."
+  Player_not_found: "<red>Player not found."
+  Cendreal-Accessory_unknown: "<red>Unknown subcommand. Available: /accessory, /accessory reload, /accessory clear <player>, /accessory view <player>."
+  Reload_usage: "<red>Usage: /accessory reload"
+  Reload_success: "<green>[Accessory+] Reload completed successfully."
+  Reload_failed: "<red>[Accessory+] Reload failed. Check the console for configuration errors."
+  View_usage: "<red>Usage: /accessory view <player>"
+  Clear_usage: "<red>Usage: /accessory clear <player>"
+  Clear_success: "<green>[Accessory+] Cleared the player's accessories."
+  Clear_failed: "<red>[Accessory+] Failed to clear the player's accessories."
+
+  # Slot requirements and returned items
+  Slot_no_permission: "<red>You do not have permission to use this accessory slot."
+  Slot_level_not_met: "<red>This accessory slot requires level {min}."
+  Slot_class_not_met: "<red>Your class cannot use this accessory slot."
+  Slot_requirement_unavailable: "<red>This slot’s requirements cannot be checked right now. Try again later."
+  Item_not_match: "<red>This item does not match this slot's requirements."
+  Item_locked: "<red>This slot is locked."
+  Slot_locked_name: "<italic:false><#800080>[LOCK]"
+  Item_limit_reached: "<red>This accessory has reached the maximum equip limit."
+  Item_cannot_unequip: "<red>This accessory is marked [Anti-unequip] and cannot be removed."
+  Accessory_returned: "<yellow>You no longer meet the requirements. Some accessories were returned to your inventory."
+  Accessory_returned_dropped: "<yellow>You no longer meet the requirements. Accessories that did not fit were dropped at your feet."
+
+  # Quick equip
+  Cendreal-Accessory_equipped: "<green>Accessory+ equipped to page {page}, slot {slot}."
+  Quick_equip_select_header: "<yellow>Multiple accessory slots match this item. Click one to switch:"
+  Quick_equip_select_option: "<aqua>[Page {page} / Slot {slot}]"
+  Quick_equip_select_hover: "<gray>Click to equip this accessory here."
+
+  # Shields and life steal
+  Life_steal_success: "<green>Life steal +"
+  Shield_missing_permission: "<red>Missing permission: "
+  Shield_unavailable: "<red>This shield feature is currently unavailable.</red>"
+  Shield_usage: "<yellow>Command Format:</yellow>"
+  Shield_give_arguments: " give &lt;me|player|all&gt; &lt;value&gt;</gray>"
+  Shield_givep_arguments: " givep &lt;me|player|all&gt; &lt;percentage&gt;</gray>"
+  Shield_invalid_number: "<red>Invalid number format -> "
+  Shield_unknown_player: "<red>Target does not exist or is offline: "
+  Shield_unknown_mode: "<red>Unknown mode: "
+  Shield_valid_modes: "; use give or givep</red>"
+  Shield_applied: "<green>Applied the action to "
+  Shield_mode: " players. Mode="
+  Shield_target: ", target="
+  Shield_value: ", value="
+
+  # Cross-server sync
+  Storage_syncing: "<yellow>Syncing your accessories from another server..."
+  Storage_locked: "<red>Your accessories are in use on another server and cannot be loaded yet."
+  Storage_migrating: "<red>The server is migrating accessory data. Please try again shortly."
+
+  # Data migration
+  Migrate_usage: "Usage: /accessory migrate <source> <target> [--dry-run] [--overwrite]"
+  Migrate_console: "Run migrations from the server console."
+  Migrate_enable_yml: "Enable YML storage to create the contents directory before migrating to it."
+  Migrate_busy: "A migration or reload is already running."
+  Migrate_online: "All players must leave before migration."
+  Migrate_pending: "Unresolved inventory writes: {detail}"
+  Migrate_leases: "The backend has active leases: {detail}"
+  Migrate_conflicts: "Target conflicts ({count}): {detail}"
+  Migrate_progress: "Processed {count} players."
+  Migrate_summary: "Source {total}, copied {copied}, overwritten {overwritten}, skipped {skipped}, failed {failed}, elapsed {ms} ms."
+  Migrate_dry: "Dry run finished without writing the target."
+  Migrate_switch: "Set storage.type to {target} and restart the server."
+  Migrate_failed: "Migration incomplete. Keep the current storage.type. {detail}"
+
+# Layout translations. Keep the keys and edit the text on the right.
+templates:
+  # Decks page
+  t_d329b41a29241902: "<#76C5E2><bold>Decks</bold> <gray>{page}/{max_page}"
+  t_c22de4119ff8ba53: "<#76C5E2>♠ Spades"
+  t_7d89c1f8d8ffa826: "<gray>The slot below only accepts Spade decks"
+  t_a15bc2c06dbbeb07: "<#DFFB9D>♣ Clubs"
+  t_96b7d4e00afccfc1: "<gray>The slot below only accepts Club decks"
+  t_cd6d12636454ac27: "<#F4A6BB>❤ Hearts"
+  t_bab650cd8243ff40: "<gray>The slot below only accepts Heart decks"
+  t_6a4f124f29d16eba: "<#F4BF75>♦ Diamonds"
+  t_5f8c57a86871a523: "<gray>The slot below only accepts Diamond decks"
+  t_129a3447b95f7b8c: "<gold>Decks · 5 slots"
+  t_1dc70e29a98f89b4: "<gray>Each of the four suits has its own slot"
+  t_80eb4d186935113d: "<gray>The bottom center slot accepts any suit"
+  t_d41b6bd292fbdd7d: "<gray>The any-suit slot only accepts decks"
+  t_47b059436d51c35b: "<yellow>Relics →"
+  t_8ce4b2db2afce3e3: "<gray>Open the 12-slot relic page"
+
+  # Relics page
+  t_1b9548bd0696fbbc: "<#FFE476><bold>Relics</bold> <gray>{page}/{max_page}"
+  t_373364d11e5fbbd8: "<#FFE476>Relics · 12 slots"
+  t_c0335bb0d4a95b36: "<gray>Each slot only accepts relics tagged [Relics]"
+  t_b1f7305cd9bbacf6: "<yellow>← Decks"
+  t_1927388b1713d1be: "<gray>Return to the 5-slot deck page"
+
+  # Shared text
+  t_2ca80ee48a319a1d: "<red>Slot Disabled"
+  t_77a2ca9d483273e8: "<gray>This slot is currently unavailable"
+  t_cc0332a724139c44: "<green>Accessory Inventory <gray>{page}/{max_page}"
+  t_99e2e1552b1fda67: "[Locked]"
+  t_45bc77bc1c58d044: "Health"

@@ -1,53 +1,68 @@
-# 可复用页面布局：文件名（不带 .yml）就是布局 ID。
-# 在 profiles/<群体>.yml 的 inventory.pages 中使用此布局名。
-# size 可省略以使用主配置默认值；title 也可按布局覆盖。
-size: 9
-
-# 当前页通过 AccessoryService API 在运行时禁用的槽位样式
-disabled-slot:
-  item:
-    type: "RED_STAINED_GLASS_PANE"
-    hide-tooltip: true
-    name: "<red>Slot Disabled"
-    lore:
-      - "<dark_red>This slot is disabled"
+# 遗物 · 两行各六格，接受带 [Relics] 标签的饰品。
+size: 36
+title: '<#FFE476><bold>遗物</bold> <gray>{page}/{max_page}'
 
 slots:
-  "1":
-    lore:
-      - "[Ring]"
+  # 背包第二行
+  "10":
+    lore: ['[Relics]']
+  "11":
+    lore: ['[Relics]']
+  "12":
+    lore: ['[Relics]']
+  "14":
+    lore: ['[Relics]']
+  "15":
+    lore: ['[Relics]']
+  "16":
+    lore: ['[Relics]']
 
-# action: "command" 时点击该物品会执行 command.console / command.player；也支持 "previous_page" / "next_page" 翻页。
+  # 背包第三行
+  "19":
+    lore: ['[Relics]']
+  "20":
+    lore: ['[Relics]']
+  "21":
+    lore: ['[Relics]']
+  "23":
+    lore: ['[Relics]']
+  "24":
+    lore: ['[Relics]']
+  "25":
+    lore: ['[Relics]']
+
+# 槽位禁用时显示的物品
+disabled-slot:
+  item:
+    type: RED_STAINED_GLASS_PANE
+    name: '<red>槽位已禁用'
+    lore:
+      - '<gray>此槽位当前不可使用'
+
+# 页面装饰与翻页按钮
 frame:
-  locked:
-    slots: [2, 4, 6]
-    type: "BLACK_STAINED_GLASS_PANE"
-    custom-model-data: 12345
+  border:
+    # 每行对应背包的一行。
+    slots: [
+      0, 1, 2, 3, 5, 6, 7, 8,
+      9, 13, 17,
+      18, 22, 26,
+      28, 29, 30, 31, 32, 33, 34, 35
+    ]
+    type: BLACK_STAINED_GLASS_PANE
     hide-tooltip: true
-    name: "<gray>Locked"
-    lore:
-      - "<dark_gray>Slot is locked"
 
-  previous_button:
-    slots: [0]
-    type: "ARROW"
-    custom-model-data: 12345
-    hide-tooltip: true
-    name: "<gray>Previous Page"
+  help:
+    slots: [4]
+    type: NETHER_STAR
+    name: '<#FFE476>遗物 · 12 格'
     lore:
-      - "<dark_gray>Go to previous page"
-    action: "previous_page"
+      - '<gray>每格仅接受带有 [Relics] 的遗物'
 
-  command_button:
-    slots: [7]
-    type: "BOOK"
-    hide-tooltip: false
-    name: "<aqua>Command Button"
+  previous:
+    slots: [27]
+    type: ARROW
+    name: '<yellow>← 牌组'
     lore:
-      - "<gray>Click to run configured commands"
-    action: "command"
-    command:
-      console:
-        - "say {player} clicked accessory page {page} slot {slot}"
-      player:
-        - "help"
+      - '<gray>返回 5 格牌组页'
+    action: previous_page

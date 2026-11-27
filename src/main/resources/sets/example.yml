@@ -1,0 +1,19 @@
+# 星辰套装 · 移除下方配置的注释标记即可启用。
+# members 填写物品 ID，bonuses 按已装备的件数配置奖励。
+#
+# star:
+#   name: '<gold>星辰套装'
+#   members:
+#     - 'accessory:star_ring'
+#     - 'accessory:star_charm'
+#
+#   bonuses:
+#     "2":
+#       attributes:
+#         # 原版属性需要在 config.yml 启用 attribute.lore.enable 并配置「生命」关键词。
+#         vanilla:
+#           - '生命 +4'
+#         auraskills:
+#           - 'auraskills:strength +5'
+#       skills:
+#         - 'example_ring:pulse'

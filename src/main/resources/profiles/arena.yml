@@ -1,12 +1,14 @@
-# 示例默认关闭。启用后，进入 arena 世界的玩家使用此规则。
+# 竞技场档案 · 在 arena 世界限制装备、卸下和使用技能。
 enabled: false
 priority: 100
+
 match:
   worlds: [arena]
-  # 同时满足所有权限；空列表不限制权限。世界和权限之间是 AND。
+  # 玩家须同时满足世界条件和全部权限。空列表允许任意权限。
   permissions: []
+
+# 其他规则继承 default。多个档案同时匹配时，优先级最高的生效。
 rules:
   equip: false
   unequip: false
   skills: false
-  # 省略字段继承 default。每个玩家只选优先级最高的一套。

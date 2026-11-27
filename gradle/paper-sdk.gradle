@@ -1,0 +1,50 @@
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
+import java.security.MessageDigest
+import java.util.zip.ZipFile
+
+// Use the same mapped server and API as Paper 26.3 build 205 for the native inventory transfer.
+def checksum = 'a0a58f532f08054ea92eb916d3edb6ed3c86429d77175317304f6e995cce9968'
+def sdk = layout.projectDirectory.dir('.gradle/paper-sdk/26.3-205').asFile
+def server = new File(sdk, 'paper.jar')
+def sdkFiles = {
+    def jars = []
+    if (server.isFile()) new ZipFile(server).withCloseable { zip ->
+        ['libraries', 'versions'].each { group ->
+            zip.getInputStream(zip.getEntry("META-INF/${group}.list")).withReader('UTF-8') { reader ->
+                reader.eachLine { line -> jars.add(new File(sdk, group + '/' + line.split('\t')[2])) }
+            }
+        }
+    }
+    jars
+}
+def prepare = tasks.register('preparePaperSdk') {
+    group = 'build setup'
+    inputs.property('paperSha256', checksum)
+    outputs.file(server)
+    outputs.files(providers.provider { sdkFiles() })
+    outputs.upToDateWhen { server.exists() && !sdkFiles().empty && sdkFiles().every { it.isFile() } }
+    doLast {
+        sdk.mkdirs()
+        if (!server.exists()) {
+            if (gradle.startParameter.offline) throw new GradleException('Run preparePaperSdk once online before using --offline.')
+            def download = new URI("https://fill-data.papermc.io/v1/objects/${checksum}/paper-26.3-205.jar").toURL().openConnection()
+            download.setRequestProperty('User-Agent', 'accessoryplus-build/26.3 (Paper development SDK)')
+            File temporary = new File(sdk, 'paper.jar.part')
+            download.inputStream.withCloseable { input -> temporary.withOutputStream { it << input } }
+            if (MessageDigest.getInstance('SHA-256').digest(temporary.bytes).encodeHex().toString() != checksum)
+                throw new GradleException('Paper 26.3 build 205 checksum mismatch')
+            Files.move(temporary.toPath(), server.toPath(), StandardCopyOption.REPLACE_EXISTING)
+        }
+        if (MessageDigest.getInstance('SHA-256').digest(server.bytes).encodeHex().toString() != checksum)
+            throw new GradleException('Unexpected cached Paper SDK')
+        if (sdkFiles().any { !it.isFile() }) {
+            def javaBin = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(25) }.get().executablePath.asFile
+            def patch = new ProcessBuilder(javaBin.absolutePath, '-Dpaperclip.patchonly=true', '-jar', server.name)
+                    .directory(sdk).inheritIO().start()
+            if (patch.waitFor() != 0 || sdkFiles().any { !it.isFile() })
+                throw new GradleException('Paperclip could not prepare the 26.3 compile SDK')
+        }
+    }
+}
+ext.paperSdk = files(providers.provider { sdkFiles() }).builtBy(prepare)

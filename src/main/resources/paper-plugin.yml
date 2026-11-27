@@ -1,8 +1,10 @@
-name: Accessory
-version: '4.0.1'
-main: com.blanoir.accessory.Accessory
-api-version: '1.21.10'
-authors: [Blanoir]
+name: accessoryplus
+prefix: 'accessory+'
+version: '${version}'
+main: com.cendreal.accessory.paper.AccessoryPlus
+api-version: '26.3'
+folia-supported: true
+authors: ['LoscX']
 dependencies:
   server:
     AuraSkills:
@@ -21,13 +23,9 @@ dependencies:
       load: BEFORE
       required: false
       join-classpath: true
-    BlancAttribute:
-      load: BEFORE
-      required: false
-      join-classpath: true
 permissions:
   accessory.reload:
-    description: Allow reloading Accessory
+    description: Allow reloading accessory+
     default: op
   accessory.clear:
     description: Allow clearing player accessories
@@ -41,3 +39,17 @@ permissions:
   accessory.magicshield:
     description: Allow adjusting magic shield
     default: op
+  accessory.admin:
+    default: op
+    children:
+      accessory.reload: true
+      accessory.clear: true
+      accessory.view: true
+      accessory.shield: true
+      accessory.magicshield: true
+  cendreal.accessory.admin:
+    default: op
+    children:
+      accessory.admin: true
+
+provides: [Accessory]

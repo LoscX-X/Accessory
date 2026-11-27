@@ -1,0 +1,7 @@
+dependencies {
+    api project(':core')
+    compileOnly('dev.aurelium:auraskills-api-bukkit:2.3.0') { transitive = false }
+    compileOnly('dev.aurelium:auraskills-api:2.3.0') { transitive = false }
+    compileOnly('io.lumine:Mythic-Dist:5.13.0') { transitive = false }
+    compileOnly('me.clip:placeholderapi:2.11.6') { transitive = false }
+}

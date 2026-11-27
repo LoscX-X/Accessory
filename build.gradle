@@ -1,82 +1,56 @@
 plugins {
-    id 'java'
-    id 'xyz.jpenilla.run-paper' version '2.3.1'
-    id 'com.gradleup.shadow' version '8.3.5'
+    id 'java-library'
+    id 'com.gradleup.shadow' version '9.3.0'
 }
 
-group = 'com.blanoir'
-version = '4.0.1'
+group = 'com.cendreal.accessory'
+version = '6.0.0'
+apply from: 'gradle/paper-sdk.gradle'
 
-repositories {
-    mavenCentral()
-    maven {
-        name = 'papermc-repo'
-        url = uri('https://repo.papermc.io/repository/maven-public/')
+allprojects {
+    apply plugin: 'java-library'
+    group = rootProject.group
+    version = rootProject.version
+    repositories {
+        mavenCentral()
+        maven { url = uri('https://repo.aurelium.dev/releases'); content { includeGroup 'dev.aurelium' } }
+        maven { url = uri('https://repo.extendedclip.com/releases/'); content { includeGroup 'me.clip' } }
+        maven { url = uri('https://mvn.lumine.io/repository/maven-public/'); content { includeGroup 'io.lumine' } }
     }
-    maven {
-        url = uri('https://repo.extendedclip.com/releases/')
-    }
-}
-
-dependencies {
-    compileOnly files('libs/MythicMobs.jar')
-    compileOnly 'io.papermc.paper:paper-api:26.2.build.+'
-    compileOnly 'dev.aurelium:auraskills-api-bukkit:2.3.3'
-    compileOnly 'me.clip:placeholderapi:2.11.7'
-    compileOnly files('libs/AttributePlus.jar')
-    compileOnly files('libs/BlancAttribute.jar')
-
-    implementation 'redis.clients:jedis:5.2.0'
-    implementation 'com.mysql:mysql-connector-j:9.6.0'
-    implementation 'com.zaxxer:HikariCP:6.3.0'
-}
-
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(25))
-}
-shadowJar {
-    archiveFileName = "Accessory.jar"
-    archiveClassifier.set("")
-    mergeServiceFiles()
-    exclude("META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA")
-}
-tasks {
-    runServer {
-        minecraftVersion('1.21.12')
+    java { toolchain.languageVersion = JavaLanguageVersion.of(25) }
+    tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 25 }
+    tasks.withType(AbstractArchiveTask).configureEach { preserveFileTimestamps = false; reproducibleFileOrder = true }
+    dependencies {
+        compileOnly rootProject.paperSdk
+        compileOnly 'org.jetbrains:annotations:26.0.2'
     }
 }
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-    options.release.set(25)
-}
-
-tasks.withType(Javadoc).configureEach {
-    options.encoding = 'UTF-8'
-}
-
+dependencies { implementation project(':paper') }
 processResources {
-    def props = [version: version]
-    inputs.properties props
-    filteringCharset = 'UTF-8'
-    filesMatching('paper-plugin.yml') {
-        expand props
-    }
+    inputs.property('version', project.version)
+    filesMatching('paper-plugin.yml') { expand(version: project.version) }
 }
-
-// Offline-friendly behavioral verification against the actual configuration/event classes.
-sourceSets {
-    verification {
-        compileClasspath = sourceSets.main.output + configurations.compileClasspath
-        runtimeClasspath = output + compileClasspath
-    }
+jar { archiveClassifier = 'plain' }
+shadowJar {
+    archiveFileName = 'accessory+.jar'
+    relocate 'com.zaxxer.hikari', 'com.cendreal.accessory.lib.hikari'
+    relocate 'redis.clients.jedis', 'com.cendreal.accessory.lib.jedis'
+    relocate 'org.slf4j', 'com.cendreal.accessory.lib.slf4j'
+    relocate 'com.mysql', 'com.cendreal.accessory.lib.mysql'
+    relocate 'org.apache.commons.pool2', 'com.cendreal.accessory.lib.pool2'
+    relocate 'org.json', 'com.cendreal.accessory.lib.json'
+    relocate 'com.google.gson', 'com.cendreal.accessory.lib.gson'
+    relocate 'com.google.errorprone', 'com.cendreal.accessory.lib.errorprone'
+    relocate 'com.google.protobuf', 'com.cendreal.accessory.lib.protobuf'
+    filesMatching('META-INF/services/**') { duplicatesStrategy = DuplicatesStrategy.INCLUDE }
+    mergeServiceFiles()
+    exclude 'META-INF/*.SF', 'META-INF/*.RSA', 'META-INF/*.DSA'
 }
-tasks.register('verifyAccessory', JavaExec) {
-    group = 'verification'
-    description = 'Checks attribute selection, loader contexts and equipment event contracts.'
-    dependsOn tasks.verificationClasses
-    classpath = sourceSets.verification.runtimeClasspath
-    mainClass = 'com.blanoir.accessory.verification.VerificationMain'
-    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(25) }
+tasks.register('releaseJar', Copy) {
+    group = 'build'
+    description = 'Copies the installable accessory+ plugin to dist/26.3.'
+    from(shadowJar.archiveFile)
+    into(layout.projectDirectory.dir('dist/26.3'))
 }
-tasks.named('check') { dependsOn tasks.named('verifyAccessory') }
+build.dependsOn 'releaseJar'

@@ -1,1 +1,3 @@
-rootProject.name = 'Accessory'
+pluginManagement { repositories { gradlePluginPortal(); mavenCentral() } }
+rootProject.name = 'accessoryplus'
+include 'api', 'core', 'paper'

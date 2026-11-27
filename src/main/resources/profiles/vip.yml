@@ -1,9 +1,12 @@
-# 开启后，拥有 accessory.profile.vip 权限的玩家使用两页背包。
-# 将 default/extra 替换成 layouts/ 中的文件名即可定制槽位与按钮。
+# VIP 档案 · 开启后，为拥有指定权限的玩家提供两页背包。
 enabled: false
 priority: 10
+
 match:
   permissions: [accessory.profile.vip]
+
 inventory:
   title: '<gold>VIP 饰品 <gray>{page}/{max_page}'
-  pages: [default, extra]
+  pages:
+    - default
+    - extra

@@ -1,0 +1,103 @@
+# Accessory+ · Español
+
+messages:
+  # Comandos y permisos
+  No_permission: "<red>Sin permiso para este comando."
+  Only_player_open: "<red>Comando solo para jugadores dentro del juego."
+  Player_not_found: "<red>No encontrado: jugador"
+  Cendreal-Accessory_unknown: "<red>Subcomando desconocido. /accessory, /accessory reload, /accessory clear <player>, /accessory view <player>."
+  Reload_usage: "<red>Uso: /accessory reload"
+  Reload_success: "<green>[Accessory+] Recarga completada."
+  Reload_failed: "<red>[Accessory+] Recarga fallida. Revisa errores de configuración en consola."
+  View_usage: "<red>Uso: /accessory view <player>"
+  Clear_usage: "<red>Uso: /accessory clear <player>"
+  Clear_success: "<green>[Accessory+] Accesorios del jugador eliminados."
+  Clear_failed: "<red>[Accessory+] Error al eliminar accesorios."
+
+  # Requisitos de las ranuras y objetos devueltos
+  Slot_no_permission: "<red>Sin permiso para esta ranura de accesorio."
+  Slot_level_not_met: "<red>This accessory slot requires level {min}."
+  Slot_class_not_met: "<red>Your class cannot use this accessory slot."
+  Slot_requirement_unavailable: "<red>This slot’s requirements cannot be checked right now. Try again later."
+  Item_not_match: "<red>Objeto incompatible con esta ranura."
+  Item_locked: "<red>Ranura bloqueada."
+  Slot_locked_name: "<italic:false><#800080>[BLOQUEADO]"
+  Item_limit_reached: "<red>Límite de equipamiento de este accesorio alcanzado."
+  Item_cannot_unequip: "<red>[Anti-unequip]: no se puede quitar."
+  Accessory_returned: "<yellow>You no longer meet the requirements. Some accessories were returned to your inventory."
+  Accessory_returned_dropped: "<yellow>You no longer meet the requirements. Accessories that did not fit were dropped at your feet."
+
+  # Equipamiento rápido
+  Cendreal-Accessory_equipped: "<green>Accessory+ equipado en página {page}, ranura {slot}."
+  Quick_equip_select_header: "<yellow>Varias ranuras compatibles. Haz clic para cambiar:"
+  Quick_equip_select_option: "<aqua>[Página {page} / Slot {slot}]"
+  Quick_equip_select_hover: "<gray>Clic para equipar aquí."
+
+  # Escudos y robo de vida
+  Life_steal_success: "<green>Robo de vida +"
+  Shield_missing_permission: "<red>permiso ausente: "
+  Shield_unavailable: "<red>Función de escudo no disponible.</red>"
+  Shield_usage: "<yellow>Formato del comando:</yellow>"
+  Shield_give_arguments: " dar &lt;me|player|all&gt; &lt;value&gt;</gray>"
+  Shield_givep_arguments: " givep &lt;me|player|all&gt; &lt;percentage&gt;</gray>"
+  Shield_invalid_number: "<red>Formato numérico inválido -> "
+  Shield_unknown_player: "<red>Objetivo inexistente o desconectado: "
+  Shield_unknown_mode: "<red>Modo desconocido: "
+  Shield_valid_modes: "; usa give o givep</red>"
+  Shield_applied: "<green>Acción aplicada a "
+  Shield_mode: " jugadores. Modo="
+  Shield_target: ", objetivo="
+  Shield_value: ", valor="
+
+  # Sincronización entre servidores
+  Storage_syncing: "<yellow>Syncing your accessories from another server..."
+  Storage_locked: "<red>Your accessories are in use on another server and cannot be loaded yet."
+  Storage_migrating: "<red>The server is migrating accessory data. Please try again shortly."
+
+  # Migración de datos
+  Migrate_usage: "Usage: /accessory migrate <source> <target> [--dry-run] [--overwrite]"
+  Migrate_console: "Run migrations from the server console."
+  Migrate_enable_yml: "Enable YML storage to create the contents directory before migrating to it."
+  Migrate_busy: "A migration or reload is already running."
+  Migrate_online: "All players must leave before migration."
+  Migrate_pending: "Unresolved inventory writes: {detail}"
+  Migrate_leases: "The backend has active leases: {detail}"
+  Migrate_conflicts: "Target conflicts ({count}): {detail}"
+  Migrate_progress: "Processed {count} players."
+  Migrate_summary: "Source {total}, copied {copied}, overwritten {overwritten}, skipped {skipped}, failed {failed}, elapsed {ms} ms."
+  Migrate_dry: "Dry run finished without writing the target."
+  Migrate_switch: "Set storage.type to {target} and restart the server."
+  Migrate_failed: "Migration incomplete. Keep the current storage.type. {detail}"
+
+# Traducciones de la interfaz. Conserva las claves y edita el texto de la derecha.
+templates:
+  # Página de barajas
+  t_d329b41a29241902: "<#76C5E2><bold>Mazos</bold> <gray>{page}/{max_page}"
+  t_c22de4119ff8ba53: "<#76C5E2>♠ Picas"
+  t_7d89c1f8d8ffa826: "<gray>Debajo: solo mazos de picas"
+  t_a15bc2c06dbbeb07: "<#DFFB9D>♣ Tréboles"
+  t_96b7d4e00afccfc1: "<gray>Debajo: solo mazos de tréboles"
+  t_cd6d12636454ac27: "<#F4A6BB>❤ Corazones"
+  t_bab650cd8243ff40: "<gray>Debajo: solo mazos de corazones"
+  t_6a4f124f29d16eba: "<#F4BF75>♦ Diamantes"
+  t_5f8c57a86871a523: "<gray>Debajo: solo mazos de diamantes"
+  t_129a3447b95f7b8c: "<gold>Mazos · 5 ranuras"
+  t_1dc70e29a98f89b4: "<gray>Cada palo tiene su propia ranura"
+  t_80eb4d186935113d: "<gray>La ranura central inferior admite cualquier palo"
+  t_d41b6bd292fbdd7d: "<gray>La ranura de cualquier palo solo admite mazos"
+  t_47b059436d51c35b: "<yellow>Reliquias →"
+  t_8ce4b2db2afce3e3: "<gray>Abrir página de 12 ranuras de reliquias"
+
+  # Página de reliquias
+  t_1b9548bd0696fbbc: "<#FFE476><bold>Reliquias</bold> <gray>{page}/{max_page}"
+  t_373364d11e5fbbd8: "<#FFE476>Reliquias · 12 ranuras"
+  t_c0335bb0d4a95b36: "<gray>Cada ranura solo admite reliquias [Relics]"
+  t_b1f7305cd9bbacf6: "<yellow>← Mazos"
+  t_1927388b1713d1be: "<gray>Volver a la página de 5 ranuras de mazos"
+
+  # Textos compartidos
+  t_2ca80ee48a319a1d: "<red>Ranura desactivada"
+  t_77a2ca9d483273e8: "<gray>Esta ranura no está disponible"
+  t_cc0332a724139c44: "<green>Inventario de accesorios <gray>{page}/{max_page}"
+  t_99e2e1552b1fda67: "[Bloqueado]"
+  t_45bc77bc1c58d044: "Salud"

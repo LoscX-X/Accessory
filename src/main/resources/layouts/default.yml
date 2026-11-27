@@ -1,64 +1,81 @@
-# 可复用页面布局：文件名（不带 .yml）就是布局 ID。
-# 在 profiles/<群体>.yml 的 inventory.pages 中使用此布局名。
-# size 可省略以使用主配置默认值；title 也可按布局覆盖。
-size: 9
+# 牌组 · 每个花色一格，底部中央可放任意花色。
+size: 27
+title: '<#76C5E2><bold>牌组</bold> <gray>{page}/{max_page}'
 
-# 当前页通过 AccessoryService API 在运行时禁用的槽位样式
+# 装备条件。槽号从 0 开始，同一槽位的 Lore 匹配任意一项即可。
+slots:
+  "10":
+    lore: ['[♠]']
+  "12":
+    lore: ['[♣]']
+  "14":
+    lore: ['[❤]']
+  "16":
+    lore: ['[♦]']
+  "22":
+    lore: ['[♠]', '[♣]', '[❤]', '[♦]']
+
+# 槽位禁用时显示的物品
 disabled-slot:
   item:
-    type: "RED_STAINED_GLASS_PANE"
-    hide-tooltip: true
-    name: "<red>Slot Disabled"
+    type: RED_STAINED_GLASS_PANE
+    name: '<red>槽位已禁用'
     lore:
-      - "<dark_red>This slot is disabled"
+      - '<gray>此槽位当前不可使用'
 
-# 当前页面的插槽规则：每个槽位允许放入的物品 lore 关键词
-# 同时支持 permission 检测
-slots:
-  "1":
-    # permission: "accessory.slot.ring"
-    lore:
-      - "[Ring]"
-  "3":
-    lore:
-      - "[Necklace]"
-  "5":
-    lore:
-      - "[Bracelet]"
-  "7":
-    lore:
-      - "[Talisman]"
-
-# 当前页面物品/边框配置。每个物品自己配置 slots，可放置多个不同物品。
-# action: "command" 时点击该物品会执行 command.console / command.player；也支持 "previous_page" / "next_page" 翻页。
+# 页面装饰与翻页按钮
 frame:
-  locked:
-    slots: [2, 4, 6]
-    type: "BLACK_STAINED_GLASS_PANE"
-    custom-model-data: 12345
+  border:
+    # 每行对应背包的一行。
+    slots: [
+      0, 2, 6, 8,
+      9, 11, 13, 15, 17,
+      18, 19, 20, 21, 23, 24, 25
+    ]
+    type: BLACK_STAINED_GLASS_PANE
     hide-tooltip: true
-    name: "<gray>Locked"
+
+  spade:
+    slots: [1]
+    type: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: '<#76C5E2>♠ 黑桃'
     lore:
-      - "<dark_gray>Slot is locked"
-  next_button:
-    slots: [8]
-    type: "ARROW"
-    custom-model-data: 12345
-    hide-tooltip: true
-    name: "<gray>Next Page"
+      - '<gray>下方槽位仅接受黑桃牌组'
+
+  club:
+    slots: [3]
+    type: LIME_STAINED_GLASS_PANE
+    name: '<#DFFB9D>♣ 梅花'
     lore:
-      - "<dark_gray>Go to next page"
-    action: "next_page"
+      - '<gray>下方槽位仅接受梅花牌组'
+
+  heart:
+    slots: [5]
+    type: PINK_STAINED_GLASS_PANE
+    name: '<#F4A6BB>❤ 红桃'
+    lore:
+      - '<gray>下方槽位仅接受红桃牌组'
+
+  diamond:
+    slots: [7]
+    type: ORANGE_STAINED_GLASS_PANE
+    name: '<#F4BF75>♦ 方块'
+    lore:
+      - '<gray>下方槽位仅接受方块牌组'
+
   help:
-    slots: []
-    type: "BOOK"
-    hide-tooltip: false
-    name: "<aqua>Help"
+    slots: [4]
+    type: BOOK
+    name: '<gold>牌组 · 5 格'
     lore:
-      - "<gray>Click for help"
-    action: "command"
-    command:
-      console:
-        - "say {player} clicked accessory page {page} slot {slot}"
-      player:
-        - "help"
+      - '<gray>四个花色各有一个专属槽位'
+      - '<gray>底部中央为任意花色槽位'
+      - '<gray>任意花色槽位仅接受牌组'
+
+  next:
+    slots: [26]
+    type: ARROW
+    name: '<yellow>遗物 →'
+    lore:
+      - '<gray>前往 12 格遗物页'
+    action: next_page

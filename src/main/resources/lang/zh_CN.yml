@@ -1,0 +1,70 @@
+# Accessory+ · 简体中文
+
+messages:
+  # 命令与权限
+  No_permission: "<red>你没有权限使用此功能。"
+  Only_player_open: "<red>请在游戏内使用此功能。"
+  Player_not_found: "<red>未找到该玩家。"
+  Cendreal-Accessory_unknown: "<red>未知子命令。可用命令：/accessory, /accessory reload, /accessory clear <玩家名>, /accessory view <玩家名>"
+  Reload_usage: "<red>用法：/accessory reload"
+  Reload_success: "<green>配置已重载。"
+  Reload_failed: "<red>重载失败，请检查控制台中的配置错误。"
+  View_usage: "<red>用法：/accessory view <玩家名>"
+  Clear_usage: "<red>用法：/accessory clear <玩家名>"
+  Clear_success: "<green>已清空该玩家的饰品。"
+  Clear_failed: "<red>清空该玩家饰品失败。"
+
+  # 槽位条件与饰品退回
+  Slot_no_permission: "<red>你没有权限使用该饰品槽位。"
+  Slot_level_not_met: "<red>此槽位需要达到 {min} 级。"
+  Slot_class_not_met: "<red>你的职业无法使用这个槽位。"
+  Slot_requirement_unavailable: "<red>暂时无法判断这个槽位的条件，请稍后再试。"
+  Item_not_match: "<red>该饰品不符合当前槽位要求。"
+  Item_locked: "<red>该槽位已锁定。"
+  Slot_locked_name: "<italic:false><#800080>[已锁定]"
+  Item_limit_reached: "<red>该饰品已达到最大可装备数量。"
+  Item_cannot_unequip: "<red>该饰品无法卸下。"
+  Accessory_returned: "<yellow>你不再满足条件，部分饰品已退回背包。"
+  Accessory_returned_dropped: "<yellow>你不再满足条件，部分饰品已退回，背包放不下的掉在了脚下。"
+
+  # 快捷装备
+  Cendreal-Accessory_equipped: "<green>饰品已装备到第 {page} 页，第 {slot} 格。"
+  Quick_equip_select_header: "<yellow>该饰品匹配多个槽位，请点击要切换的槽位："
+  Quick_equip_select_option: "<aqua>[第 {page} 页 / 第 {slot} 格]"
+  Quick_equip_select_hover: "<gray>点击将该饰品装备到这里。"
+
+  # 护盾与生命偷取
+  Life_steal_success: "<green>生命偷取 +"
+  Shield_missing_permission: "<red>权限不足:"
+  Shield_unavailable: "<red>该护盾功能暂不可用.</red>"
+  Shield_usage: "<yellow>命令格式:</yellow>"
+  Shield_give_arguments: " give &lt;me|玩家|all&gt; &lt;数值&gt;</gray>"
+  Shield_givep_arguments: " givep &lt;me|玩家|all&gt; &lt;百分比&gt;</gray>"
+  Shield_invalid_number: "<red>参数错误:数值格式无效 -> "
+  Shield_unknown_player: "<red>目标不存在或不在线:"
+  Shield_unknown_mode: "<red>参数错误:未知模式 "
+  Shield_valid_modes: ",可用 give 或 givep</red>"
+  Shield_applied: "<green>执行成功:已对 "
+  Shield_mode: " 名玩家应用操作.模式="
+  Shield_target: ", 目标="
+  Shield_value: ", 数值="
+
+  # 跨服同步
+  Storage_syncing: "<yellow>正在从其他服务器同步饰品…"
+  Storage_locked: "<red>你的饰品正在另一台服务器上使用，暂时无法加载。"
+  Storage_migrating: "<red>服务器正在迁移饰品数据，请稍后再进。"
+
+  # 数据迁移
+  Migrate_usage: "用法：/accessory migrate <来源> <目标> [--dry-run] [--overwrite]"
+  Migrate_console: "请在服务器控制台执行迁移。"
+  Migrate_enable_yml: "请先启用 YML 存储以创建 contents 目录，再执行迁移。"
+  Migrate_busy: "已有迁移或重载正在进行。"
+  Migrate_online: "迁移前请让所有玩家退出服务器。"
+  Migrate_pending: "存在未成功的库存写入：{detail}"
+  Migrate_leases: "数据库仍有未到期的租约：{detail}"
+  Migrate_conflicts: "目标已有 {count} 条冲突：{detail}"
+  Migrate_progress: "已处理 {count} 个玩家。"
+  Migrate_summary: "来源 {total}，复制 {copied}，覆盖 {overwritten}，跳过 {skipped}，失败 {failed}，耗时 {ms} ms。"
+  Migrate_dry: "预演结束，未写入目标。"
+  Migrate_switch: "可以把 storage.type 改为 {target} 并重启服务器。"
+  Migrate_failed: "迁移不完整，请勿切换 storage.type。{detail}"

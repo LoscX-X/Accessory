@@ -1,0 +1,103 @@
+# Accessory+ · 日本語
+
+messages:
+  # コマンドと権限
+  No_permission: "<red>このコマンドの使用権限なし."
+  Only_player_open: "<red>ゲーム内プレイヤー専用コマンド."
+  Player_not_found: "<red>見つかりません: プレイヤー"
+  Cendreal-Accessory_unknown: "<red>不明なサブコマンド. /accessory, /accessory reload, /accessory clear <player>, /accessory view <player>."
+  Reload_usage: "<red>使用方法: /accessory reload"
+  Reload_success: "<green>[Accessory+] 再読み込み完了."
+  Reload_failed: "<red>[Accessory+] 再読み込み失敗. コンソールの設定エラーを確認."
+  View_usage: "<red>使用方法: /accessory view <player>"
+  Clear_usage: "<red>使用方法: /accessory clear <player>"
+  Clear_success: "<green>[Accessory+] アクセサリー削除完了."
+  Clear_failed: "<red>[Accessory+] アクセサリー削除失敗."
+
+  # スロットの条件と装備の返却
+  Slot_no_permission: "<red>この装備スロットの使用権限なし."
+  Slot_level_not_met: "<red>This accessory slot requires level {min}."
+  Slot_class_not_met: "<red>Your class cannot use this accessory slot."
+  Slot_requirement_unavailable: "<red>This slot’s requirements cannot be checked right now. Try again later."
+  Item_not_match: "<red>このスロットの条件に合いません."
+  Item_locked: "<red>このスロットはロック中."
+  Slot_locked_name: "<italic:false><#800080>[ロック]"
+  Item_limit_reached: "<red>このアクセサリーの装備上限に到達."
+  Item_cannot_unequip: "<red>[Anti-unequip] のため取り外せません."
+  Accessory_returned: "<yellow>You no longer meet the requirements. Some accessories were returned to your inventory."
+  Accessory_returned_dropped: "<yellow>You no longer meet the requirements. Accessories that did not fit were dropped at your feet."
+
+  # クイック装備
+  Cendreal-Accessory_equipped: "<green>Accessory+ 装備ページ {page}, スロット {slot}."
+  Quick_equip_select_header: "<yellow>複数スロットに対応. クリックで切替:"
+  Quick_equip_select_option: "<aqua>[ページ {page} / Slot {slot}]"
+  Quick_equip_select_hover: "<gray>クリックでここに装備."
+
+  # シールドと体力吸収
+  Life_steal_success: "<green>吸血 +"
+  Shield_missing_permission: "<red>必要権限: "
+  Shield_unavailable: "<red>このシールド機能は現在利用不可.</red>"
+  Shield_usage: "<yellow>コマンド形式:</yellow>"
+  Shield_give_arguments: " 付与 &lt;me|player|all&gt; &lt;value&gt;</gray>"
+  Shield_givep_arguments: " givep &lt;me|player|all&gt; &lt;percentage&gt;</gray>"
+  Shield_invalid_number: "<red>数値形式が無効 -> "
+  Shield_unknown_player: "<red>対象は不在またはオフライン: "
+  Shield_unknown_mode: "<red>不明なモード: "
+  Shield_valid_modes: "; give または givep を使用</red>"
+  Shield_applied: "<green>操作適用先 "
+  Shield_mode: " 人. モード="
+  Shield_target: ", 対象="
+  Shield_value: ", 値="
+
+  # サーバー間の同期
+  Storage_syncing: "<yellow>Syncing your accessories from another server..."
+  Storage_locked: "<red>Your accessories are in use on another server and cannot be loaded yet."
+  Storage_migrating: "<red>The server is migrating accessory data. Please try again shortly."
+
+  # データ移行
+  Migrate_usage: "Usage: /accessory migrate <source> <target> [--dry-run] [--overwrite]"
+  Migrate_console: "Run migrations from the server console."
+  Migrate_enable_yml: "Enable YML storage to create the contents directory before migrating to it."
+  Migrate_busy: "A migration or reload is already running."
+  Migrate_online: "All players must leave before migration."
+  Migrate_pending: "Unresolved inventory writes: {detail}"
+  Migrate_leases: "The backend has active leases: {detail}"
+  Migrate_conflicts: "Target conflicts ({count}): {detail}"
+  Migrate_progress: "Processed {count} players."
+  Migrate_summary: "Source {total}, copied {copied}, overwritten {overwritten}, skipped {skipped}, failed {failed}, elapsed {ms} ms."
+  Migrate_dry: "Dry run finished without writing the target."
+  Migrate_switch: "Set storage.type to {target} and restart the server."
+  Migrate_failed: "Migration incomplete. Keep the current storage.type. {detail}"
+
+# レイアウトの翻訳。左側のキーを残し、右側の文章を編集します。
+templates:
+  # デッキのページ
+  t_d329b41a29241902: "<#76C5E2><bold>デッキ</bold> <gray>{page}/{max_page}"
+  t_c22de4119ff8ba53: "<#76C5E2>♠ スペード"
+  t_7d89c1f8d8ffa826: "<gray>下の枠はスペード専用"
+  t_a15bc2c06dbbeb07: "<#DFFB9D>♣ クラブ"
+  t_96b7d4e00afccfc1: "<gray>下の枠はクラブ専用"
+  t_cd6d12636454ac27: "<#F4A6BB>❤ ハート"
+  t_bab650cd8243ff40: "<gray>下の枠はハート専用"
+  t_6a4f124f29d16eba: "<#F4BF75>♦ ダイヤ"
+  t_5f8c57a86871a523: "<gray>下の枠はダイヤ専用"
+  t_129a3447b95f7b8c: "<gold>デッキ · 5 スロット"
+  t_1dc70e29a98f89b4: "<gray>4 種類のスートに専用スロットがあります"
+  t_80eb4d186935113d: "<gray>中央下の枠は全スートに対応"
+  t_d41b6bd292fbdd7d: "<gray>共通スート枠にはデッキのみ装備可能"
+  t_47b059436d51c35b: "<yellow>レリック →"
+  t_8ce4b2db2afce3e3: "<gray>12 スロットのレリックページを開く"
+
+  # 遺物のページ
+  t_1b9548bd0696fbbc: "<#FFE476><bold>レリック</bold> <gray>{page}/{max_page}"
+  t_373364d11e5fbbd8: "<#FFE476>レリック · 12 スロット"
+  t_c0335bb0d4a95b36: "<gray>各スロットには [Relics] のレリックのみ装備可能"
+  t_b1f7305cd9bbacf6: "<yellow>← デッキ"
+  t_1927388b1713d1be: "<gray>5 スロットのデッキページに戻る"
+
+  # 共通テキスト
+  t_2ca80ee48a319a1d: "<red>スロット無効"
+  t_77a2ca9d483273e8: "<gray>このスロットは現在利用できません"
+  t_cc0332a724139c44: "<green>アクセサリー装備 <gray>{page}/{max_page}"
+  t_99e2e1552b1fda67: "[ロック中]"
+  t_45bc77bc1c58d044: "体力"

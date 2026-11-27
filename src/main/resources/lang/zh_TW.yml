@@ -1,0 +1,103 @@
+# Accessory+ · 繁體中文
+
+messages:
+  # 指令與權限
+  No_permission: "<red>你沒有權限使用此功能."
+  Only_player_open: "<red>請在游戲內使用此功能."
+  Player_not_found: "<red>未找到該玩家."
+  Cendreal-Accessory_unknown: "<red>未知子命令.可用命令:/accessory, /accessory reload, /accessory clear <玩家名>, /accessory view <玩家名>"
+  Reload_usage: "<red>用法:/accessory reload"
+  Reload_success: "<green>配置已重載."
+  Reload_failed: "<red>重載失敗,請檢查控制臺中的配置錯誤."
+  View_usage: "<red>用法:/accessory view <玩家名>"
+  Clear_usage: "<red>用法:/accessory clear <玩家名>"
+  Clear_success: "<green>已清空該玩家的飾品."
+  Clear_failed: "<red>清空該玩家飾品失敗."
+
+  # 欄位條件與飾品退回
+  Slot_no_permission: "<red>你沒有權限使用該飾品槽位."
+  Slot_level_not_met: "<red>This accessory slot requires level {min}."
+  Slot_class_not_met: "<red>Your class cannot use this accessory slot."
+  Slot_requirement_unavailable: "<red>This slot’s requirements cannot be checked right now. Try again later."
+  Item_not_match: "<red>該飾品不符合當前槽位要求."
+  Item_locked: "<red>該槽位已鎖定."
+  Slot_locked_name: "<italic:false><#800080>[已鎖定]"
+  Item_limit_reached: "<red>該飾品已達到最大可裝備數量."
+  Item_cannot_unequip: "<red>該飾品無法卸下."
+  Accessory_returned: "<yellow>You no longer meet the requirements. Some accessories were returned to your inventory."
+  Accessory_returned_dropped: "<yellow>You no longer meet the requirements. Accessories that did not fit were dropped at your feet."
+
+  # 快速裝備
+  Cendreal-Accessory_equipped: "<green>飾品已裝備到第 {page} 頁,第 {slot} 格."
+  Quick_equip_select_header: "<yellow>該飾品匹配多個槽位,請點擊要切換的槽位:"
+  Quick_equip_select_option: "<aqua>[第 {page} 頁 / 第 {slot} 格]"
+  Quick_equip_select_hover: "<gray>點擊將該飾品裝備到這里."
+
+  # 護盾與生命竊取
+  Life_steal_success: "<green>生命偷取 +"
+  Shield_missing_permission: "<red>權限不足:"
+  Shield_unavailable: "<red>該護盾功能暫不可用.</red>"
+  Shield_usage: "<yellow>命令格式:</yellow>"
+  Shield_give_arguments: " give &lt;me|玩家|all&gt; &lt;數值&gt;</gray>"
+  Shield_givep_arguments: " givep &lt;me|玩家|all&gt; &lt;百分比&gt;</gray>"
+  Shield_invalid_number: "<red>參數錯誤:數值格式無效 -> "
+  Shield_unknown_player: "<red>目標不存在或不在線:"
+  Shield_unknown_mode: "<red>參數錯誤:未知模式 "
+  Shield_valid_modes: ",可用 give 或 givep</red>"
+  Shield_applied: "<green>執行成功:已對 "
+  Shield_mode: " 名玩家應用操作.模式="
+  Shield_target: ", 目標="
+  Shield_value: ", 數值="
+
+  # 跨伺服器同步
+  Storage_syncing: "<yellow>Syncing your accessories from another server..."
+  Storage_locked: "<red>Your accessories are in use on another server and cannot be loaded yet."
+  Storage_migrating: "<red>The server is migrating accessory data. Please try again shortly."
+
+  # 資料遷移
+  Migrate_usage: "Usage: /accessory migrate <source> <target> [--dry-run] [--overwrite]"
+  Migrate_console: "Run migrations from the server console."
+  Migrate_enable_yml: "Enable YML storage to create the contents directory before migrating to it."
+  Migrate_busy: "A migration or reload is already running."
+  Migrate_online: "All players must leave before migration."
+  Migrate_pending: "Unresolved inventory writes: {detail}"
+  Migrate_leases: "The backend has active leases: {detail}"
+  Migrate_conflicts: "Target conflicts ({count}): {detail}"
+  Migrate_progress: "Processed {count} players."
+  Migrate_summary: "Source {total}, copied {copied}, overwritten {overwritten}, skipped {skipped}, failed {failed}, elapsed {ms} ms."
+  Migrate_dry: "Dry run finished without writing the target."
+  Migrate_switch: "Set storage.type to {target} and restart the server."
+  Migrate_failed: "Migration incomplete. Keep the current storage.type. {detail}"
+
+# 版面譯文。保留左側識別碼，修改右側文字。
+templates:
+  # 牌組頁
+  t_d329b41a29241902: "<#76C5E2><bold>牌組</bold> <gray>{page}/{max_page}"
+  t_c22de4119ff8ba53: "<#76C5E2>♠ 黑桃"
+  t_7d89c1f8d8ffa826: "<gray>下方槽位僅接受黑桃牌組"
+  t_a15bc2c06dbbeb07: "<#DFFB9D>♣ 梅花"
+  t_96b7d4e00afccfc1: "<gray>下方槽位僅接受梅花牌組"
+  t_cd6d12636454ac27: "<#F4A6BB>❤ 紅桃"
+  t_bab650cd8243ff40: "<gray>下方槽位僅接受紅桃牌組"
+  t_6a4f124f29d16eba: "<#F4BF75>♦ 方塊"
+  t_5f8c57a86871a523: "<gray>下方槽位僅接受方塊牌組"
+  t_129a3447b95f7b8c: "<gold>牌組 · 5 格"
+  t_1dc70e29a98f89b4: "<gray>四個花色各有一個專屬槽位"
+  t_80eb4d186935113d: "<gray>底部中央為任意花色槽位"
+  t_d41b6bd292fbdd7d: "<gray>任意花色槽位僅接受牌組"
+  t_47b059436d51c35b: "<yellow>遺物 →"
+  t_8ce4b2db2afce3e3: "<gray>前往 12 格遺物頁"
+
+  # 遺物頁
+  t_1b9548bd0696fbbc: "<#FFE476><bold>遺物</bold> <gray>{page}/{max_page}"
+  t_373364d11e5fbbd8: "<#FFE476>遺物 · 12 格"
+  t_c0335bb0d4a95b36: "<gray>每格僅接受帶有 [Relics] 的遺物"
+  t_b1f7305cd9bbacf6: "<yellow>← 牌組"
+  t_1927388b1713d1be: "<gray>返回 5 格牌組頁"
+
+  # 共用文字
+  t_2ca80ee48a319a1d: "<red>槽位已禁用"
+  t_77a2ca9d483273e8: "<gray>此槽位當前不可使用"
+  t_cc0332a724139c44: "<green>飾品背包 <gray>{page}/{max_page}"
+  t_99e2e1552b1fda67: "[鎖定]"
+  t_45bc77bc1c58d044: "生命"

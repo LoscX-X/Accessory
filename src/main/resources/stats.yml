@@ -1,4 +1,4 @@
-
+# AuraSkills · 每点属性对应的特性系数，修改后重启服务器。
 stats:
   accessory/custom_stat:
     enabled: true
